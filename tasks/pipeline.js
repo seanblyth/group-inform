@@ -29,6 +29,7 @@ var jsFilesToInject = [
   'js/dependencies/sails.io.js',
 
   // Dependencies like jQuery, or Angular are brought in here
+  'js/dependencies/jquery.js',
   'js/dependencies/**/*.js',
 
   // All of the rest of your client-side js files
@@ -52,10 +53,6 @@ var templateFilesToInject = [
 
 
 
-
-
-
-
 // Default path for public folder (see documentation for more information)
 var tmpPath = '.tmp/public/';
 
@@ -76,12 +73,11 @@ module.exports.jsFilesToInject = jsFilesToInject.map(function(jsPath) {
   }
   return require('path').join('.tmp/public/', jsPath);
 });
-module.exports.templateFilesToInject = templateFilesToInject.map(function(tplPath) {
+module.exports.templateFilesToInject = templateFilesToInject.map(function(
+  tplPath) {
   // If we're ignoring the file, make sure the ! is at the beginning of the path
   if (tplPath[0] === '!') {
     return require('path').join('!assets/', tplPath.substr(1));
   }
-  return require('path').join('assets/',tplPath);
+  return require('path').join('assets/', tplPath);
 });
-
-
